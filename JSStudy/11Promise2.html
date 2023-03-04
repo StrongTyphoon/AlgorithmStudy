@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+  </body>
+  <script>
+    function fetchAndDecode(url, type){
+        return fetch(url).then(response=>{
+            if(type === 'blob'){
+                return response.blob()
+            }
+            else if(type === 'text'){
+                return response.text()
+            }
+        })
+        .catch(e=>{
+            console.log('There has been Error :',e.message)
+        })
+        .finally(()=>{
+            console.log(`fetch attempt for "${url}" finished. `)
+        })
+        
+    }
+
+    let sampleimg1 = fetchAndDecode('src/sampleimg.jpg','blob');
+    let sampleimg2 = fetchAndDecode('src/sampleimg2.jpg','blob');
+    let sampletxt = fetchAndDecode('src/sample.txt','text')
+    
+    Promise.all([sampleimg1,sampleimg2,sampletxt]).then(values=>{ // a,b,c가 fulfilled됐을떄 values는 a,b,c의 response 오브젝트가 들어있따.
+        console.log(values)
+
+        let objectURL1 = URL.createObjectURL(values[0])
+        let objectURL2 = URL.createObjectURL(values[1])
+        let descText = values[2]
+
+        let image1 = document.createElement('img');
+        let image2 = document.createElement('img');
+        image1.src = objectURL1
+        image2.src = objectURL2
+        document.body.appendChild(image1)
+        document.body.appendChild(image2)
+
+        let para = document.createElement('p');
+        para.textContent = descText
+        document.body.appendChild(para)
+
+    })
+
+  </script>
+</html>

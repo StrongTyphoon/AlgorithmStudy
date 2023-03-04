@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+  </body>
+  <script>
+    /*let promise = fetch('sampzleimg.jpg')  // 성공, 실패가 아닌 중간상태인 pending 상태
+    let promise2 = promise.then(response=>response.blob()) // promise가 성공시에 .then 블럭이 실행됨, blob을 통하여 reponse body가 완전히 다운됐는지 확인
+    // .blob을 호출하면 새로운 promise를 반환하는데, .then메서드를 호출하면 blob promise를 받아 새 promise를 만든다. 
+    // 만약 blob 오브젝트에 더 많은 것을 시키고 싶을 땐 중괄호로 묶는다.
+    let promise3 = promise2.then(myBlob=>{
+        let objectURL = URL.createObjectURL(myBlob);
+        let image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image);
+    })
+    let errorCase = promise3.catch(e=>{
+      console.log('There has been a problem with your fetch operations: '+e.message)
+    })
+    // catch가 없어도 앱은 돌아가지만, 에러시 디버깅에 어려움이 있다.
+    // 실제 앱에선 이미지를 다시 가져오거나, 기본 이미지를 표시하는 등 작업 지시 가능
+    */
+
+    fetch('sampleimg.jpg')
+    .then(response=> response.blob())
+    .then(myBlob=>{
+      let objectURL = URL.createObjectURL(myBlob)
+      let image = document.createElement('img')
+      image.src = objectURL
+      document.body.appendChild(image)
+    })
+    .catch(e=>
+    console.log("There has been a problem : ",e.message))
+
+    //실제론 위와 같이 진행된다. 즉 fullfilled promise 결과에 의해
+    //반환값이 다른 .then()블록의 executor 함수가 가진 파라미터로 전달된다.****
+    
+
+  </script>
+</html>

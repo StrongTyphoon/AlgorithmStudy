@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        이름 : <input id="name" name="name">
+        지연 : <input id="delay" name="delay">
+    </form>
+    <button id="set-alarm">Set alarm</button>
+    <div id="output"></div>
+</body>
+<script>
+
+    const name = document.querySelector('#name');
+    const delay = document.querySelector('#delay');
+    const button = document.querySelector('#set-alarm');
+    const output = document.querySelector('#output');
+
+    function alarm(person, delay) {
+    return new Promise((resolve, reject) => {
+        if (delay < 0) {
+        throw new Error('Alarm delay must not be negative');
+        }
+        window.setTimeout(() => {
+        resolve(`Wake up, ${person}!`);
+        }, delay);
+    });
+    }
+
+    // alarm 함수는 Promise 를 반환하므로 promise.all과 async/await, 프로미스 체이닝 등 프로미스로 할 수 있는 것들을 할 수 있다.
+    
+    button.addEventListener('click', async () => {
+    try {
+        const message = await alarm(name.value, delay.value);
+        output.textContent = message;
+    }
+    catch (error) {
+        output.textContent = `Couldn't set alarm: ${error}`;
+    }
+    });
+</script>
+</html>
