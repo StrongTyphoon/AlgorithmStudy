@@ -1,4 +1,4 @@
-const inp = require('fs').readFileSync('./9205맥주걷기/input.txt').toString().trim().split('\n')
+const inp = require('fs').readFileSync('dev/stdin').toString().trim().split('\n')
 const testCase = +inp[0]
 let ptr = 1
 
@@ -18,24 +18,23 @@ for(let i=0; i<testCase;i++){
     }
     const [endX, endY] = inp[ptr++].split(' ').map(ele=>{return +ele})
     
-    console.log(`[${startX},${startY}] ,`,conviAry, `, [${endX},${endY}]`)
+   // console.log(`[${startX},${startY}] ,`,conviAry, `, [${endX},${endY}]`)
     
     let ans = 'sad'
+    
     const dfs = (x,y,visit) => {
-        console.log(x,y,visit)
+        //console.log(x,y,visit)
         if(isCanGo(x,y,endX,endY)){
             ans = 'happy'
         }
         else{
-            for(cnt=0; cnt<convi; cnt++){
-                console.log(cnt, visit)
+            for(let cnt=0; cnt<convi; cnt++){
                 if(!visit[cnt]){                    
                     const temp = conviAry[cnt]
-                    console.log(temp[0],temp[1])
+                   // console.log('x,y :',x,y,'temp:',temp[0],temp[1])
 
                     if(isCanGo(x,y,temp[0],temp[1])){
                         visit[cnt] = true
-                        console.log('cnt',cnt)
                         dfs(temp[0],temp[1],visit)
                     }
                     
