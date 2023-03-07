@@ -10,19 +10,9 @@
 
 // console.log(Math.abs(-100))
 
-const dfs = (x,visit) => {
-    console.log(x,visit)
-    visit[x] = true
-
-    for(let cnt=0; cnt<5; cnt++){
-        console.log('x:',x, 'cnt:', cnt, visit)
-        if(!visit[cnt]){                    
-            const temp = cnt
-            console.log(x, temp)
-            dfs(temp, visit)    
-            
-        }
-    }
+function abc(){
+    return [1, 2, 3]
 }
 
-dfs(0, [false,false,false,false,false])
+let [a,b,c] = abc()
+console.log(a,b,c)
