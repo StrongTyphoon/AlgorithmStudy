@@ -10,9 +10,4 @@
 
 // console.log(Math.abs(-100))
 
-function abc(){
-    return [1, 2, 3]
-}
-
-let [a,b,c] = abc()
-console.log(a,b,c)
+console.log('abc'.length)

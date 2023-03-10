@@ -1,11 +1,11 @@
 // 입력
 const inp = require('fs').readFileSync('./14503로봇청소기/input.txt').toString().trim().split('\n')
-const [N,M] = inp[0].split(' ').map(ele=>{return +ele})
-const [startX,startY,startDir] = inp[1].split(' ').map(ele=>{return +ele})
+const [M,N] = inp[0].split(' ').map(ele=>{return +ele})
+const [startY,startX,startDir] = inp[1].split(' ').map(ele=>{return +ele})
 const inpAry = inp.slice(2).map(ele=>{return ele.replaceAll('\r', '').split(' ').map(ele=>{return +ele})})  
 const room = [...inpAry]
 
-console.log(room)
+//console.log(room)
 
 // 제자리가 0일 경우 현재 자리 청소 후 2로 마킹 후 카운트 => 초기상태
 
@@ -34,25 +34,21 @@ function checkState(x,y,dir){
         // 4방향 중 하나가 비어있을 경우 방향대로 직진
         let chkDir = dir
         for(let i=0; i<4;i++){
-            console.log(chkDir)
+            chkDir--
             if(chkDir<0){
                 chkDir = 3
-            }
-
+            }   
+            //console.log('dir: ',chkDir)         
             let [nextX, nextY] = [x+delta[chkDir][0], y+delta[chkDir][1]]
-            //console.log(x,delta[chkDir][0], y, delta[chkDir][1])
-            if(nextX>-1 && nextX<M&& nextY>-1 && nextY<N){
+            
+            if(nextX>-1 && nextX<N&& nextY>-1 && nextY<M){
                 if(!room[nextY][nextX]){
                     console.log(x,y,chkDir,'방향전환 후 직진')
                     return [nextX,nextY,chkDir]
                 }
             }
-                chkDir--
-
         }
-
         // 4방향중 모두 꽉 차 있을경우
-        
         nextX = x - delta[dir][0]
         nextY = y - delta[dir][1]
         if(room[nextY][nextX] === 1){
@@ -60,7 +56,7 @@ function checkState(x,y,dir){
             return [-1, -1, -1]
         }
         else{
-            console.log(nextX,nextY,dir,'후진완료 ')
+            console.log(nextX,nextY,dir,'후진완료')
             return [nextX, nextY, dir]
         }
     }
