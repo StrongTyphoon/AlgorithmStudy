@@ -11,3 +11,8 @@
 // console.log(Math.abs(-100))
 
 console.log('abc'.length)
+
+
+console.log([5,10,1,2,13].sort())
+
+console.log([5,10,1,2,13].sort((a,b)=>{return a-b}))

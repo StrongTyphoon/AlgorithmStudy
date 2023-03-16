@@ -32,7 +32,7 @@ class Queue{
     }
 
 
-// bfs 알고리즘 사용했지만, 시간초과가 났다. B의 개수를 세아려 B의 개수를 넘어서면 잘라내볼까?
+// bfs 알고리즘 사용했지만, 시간초과가 났다. B의 개수를 세아려 B의 개수를 넘어서면 잘라내볼까? // 안되네 접고 다른 알고리즘 이용해야 겠다.
 const inp = require('fs').readFileSync('./12919A와B2/input.txt').toString().trim().replaceAll('\r','').split('\n')
 
 const [S, T] = inp
