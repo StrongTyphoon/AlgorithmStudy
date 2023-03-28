@@ -12,8 +12,3 @@ const [N, C] = inp[0].split(' ').map(ele=>+ele)  // N 숫자 수(max 1000), 모�
 const dic = {}
 const inpAry = inp[1].split(' ').map(ele=>+ele)
 
-if(d)
-
-
-
-
