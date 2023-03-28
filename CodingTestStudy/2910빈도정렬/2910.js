@@ -15,5 +15,5 @@ const inpAry = inp[1].split(' ').map(ele=>+ele)
 if(d)
 
 
-Object.
+
 
