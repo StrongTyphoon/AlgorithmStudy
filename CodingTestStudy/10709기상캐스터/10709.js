@@ -27,5 +27,4 @@ for(let k=0; k<W;k++){
     day++
 
 }
-    
 console.log(dayArray.join('\n').replaceAll(',',' '))
