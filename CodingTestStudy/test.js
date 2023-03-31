@@ -17,4 +17,4 @@ for(let s of 'abc'){
     console.log(s)
 }
 
-console.log('c...c'.split(''))
+console.log('668'.search('666'))
