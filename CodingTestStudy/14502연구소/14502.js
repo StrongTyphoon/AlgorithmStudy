@@ -66,7 +66,6 @@ function solve(){
         }
     }
 
-
     let max = 0
     for(let i=0; i<ansary.length;i++){
         if(ansary[i]>max){
@@ -74,8 +73,5 @@ function solve(){
         }
     }
     console.log(max)
-
 }
-
-
 solve()
