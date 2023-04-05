@@ -3,7 +3,7 @@ const inp = fs.readFileSync('./2636치즈/input.txt').toString().trim().replaceA
 const [N,M] = inp[0].split(' ').map(e=>+e)
 const inpAry = inp.slice(1).map(e=>e.split(' ').map(e=>+e))
 
-console.log(inpAry)
+//console.log(inpAry)
 
 // 1 개수 세아리고
 // 0 주변 1을 전부 0으로 없앰 bfs // 여기서 어떤 0들을 dfs하냐면 바깥인덱싱부터 이어진 부분을 bfs 해야하네 ;; 내일해
@@ -23,7 +23,7 @@ function solve(){
                 }
             }
         }
-        console.log(cnt1)
+        //console.log(cnt1)
         if(cnt1 === 0){
             return [day,ans]
         }
@@ -32,36 +32,48 @@ function solve(){
             cnt1 = 0
             day++
             const stack = []
-            for(let i=0; i<N;i++){
-                for(let j=0;j<M;j++){
-                    if(inpAry[i][j] === 0){
-                        for(const [di,dj] of delta){
-                            const [x,y] = [i+di, j+dj]
-                            if(x>-1&&x<N&&y>-1&&y<M){
+            const dfsstack = [0,0]
+            const visited = Array.from(Array(N),()=> new Array(M).fill(0))
+
+            while(dfsstack.length){
+                const [j,i] = [dfsstack.pop(),dfsstack.pop()]
+                
+                if(inpAry[i][j] === 0){
+                    for(const [di,dj] of delta){
+                        const [x,y] = [i+di, j+dj]
+                        if(x>-1&&x<N&&y>-1&&y<M){
+                            if(!visited[x][y]){
                                 if(inpAry[x][y]===1){
                                     stack.push(x)
                                     stack.push(y)
                                 }
+                                else{
+                                    dfsstack.push(x)
+                                    dfsstack.push(y)
+                                    visited[x][y] = 1
+                                }
                             }
+                            
                         }
-                        
                     }
+                    
                 }
             }
+            
 
             while(stack.length){
                 const y = stack.pop()
                 const x = stack.pop()
-                console.log(x,y)
+                //console.log(x,y)
                 if(inpAry[x][y]===1){
                     inpAry[x][y] = 0
                 }
                 
             }
-            console.log(inpAry)
+            //console.log(inpAry)
         }
     }
     
 }
-
-console.log(solve())
+const ans = solve()
+console.log(ans.join('\n'))
