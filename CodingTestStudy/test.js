@@ -19,14 +19,24 @@
 
 // console.log('668'.search('666'))
 
-const inpary = [[0,0,0],[0,0,0],[0,0,0]]
+// const inpary = [[0,0,0],[0,0,0],[0,0,0]]
 
-let ary = JSON.parse(JSON.stringify(inpary))
-ary[0][1] = 1
-ary[0][2] = 1
-console.log(ary)
-console.log(inpary)
+// let ary = JSON.parse(JSON.stringify(inpary))
+// ary[0][1] = 1
+// ary[0][2] = 1
+// console.log(ary)
+// console.log(inpary)
 
-ary = JSON.parse(JSON.stringify(inpary))
-ary[1][1] = 1
-console.log(ary)
+// ary = JSON.parse(JSON.stringify(inpary))
+// ary[1][1] = 1
+// console.log(ary)
+
+
+class Node{
+    constructor(val){
+        this.val = val
+        this.children = []
+    }
+}
+
+
