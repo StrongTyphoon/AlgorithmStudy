@@ -39,4 +39,6 @@ class Node{
     }
 }
 
+const ary = [1,5,3,4,2,5,6]
 
+console.log(Math.max(ary))

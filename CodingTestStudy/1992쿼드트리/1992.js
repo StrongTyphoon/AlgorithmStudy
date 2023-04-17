@@ -28,5 +28,5 @@ function dfs(n,x,y){
     }
 
 }
-//복잡하네 ; 
+//복잡하네 ; zxczxc
 dfs(N,0,0)
