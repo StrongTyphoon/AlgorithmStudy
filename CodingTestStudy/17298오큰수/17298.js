@@ -29,6 +29,6 @@ while(stackFront.length){
 
     stackBack.push(temp)
     ptr--
-
 }
+
 console.log(ans.join(' '))
