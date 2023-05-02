@@ -7,10 +7,6 @@
 // visited에 0을 할당하고, visited에 현재 시간만 저장하는 방법에 bfs로 바꿨는데 어마무시한 성능 상승을 확인하였다. BFS 그렇게 많은 작업이 더 추가된거 같지 않은데 성능차이가 이렇게 심하다니.. 
 // 하지만 52%에서 틀렸다. 
 // 2 2/nL L 의 case에서 2가 나오는 반례가 있었다. 이는 시작점이 0이라서 수정 가능해서 생기는 문제다.
-// 결과적으로 시작점 visited에 다시 0으로 할당하여서 해결하였다. 시작점 visited는 2가 될 수 밖에 없는 상황인데 이로 인한 다른 visited 요소들에 대한 영향은 없다.
-// 시간이 4s 넘게 나와 확인한 결과 Queue class를 선언하여 해결 하는 것이 잦은 선언? 으로 인해 (아마도) 훨씬 더 많은 시간이 걸리는 것을 확인하였다. 그냥 shift가 더 빠르다니..
-// 의외로 for(i=0; i<4; i++) 보다 delX.forEach(_,idx)가 더 빨랐다. 왜일까..?
-
 
 const fs = require('fs')
 const inp = fs.readFileSync('./2589보물섬/input.txt').toString().trim().replaceAll('\r','').split('\n')

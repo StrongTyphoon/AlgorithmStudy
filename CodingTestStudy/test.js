@@ -32,13 +32,16 @@
 // console.log(ary)
 
 
-class Node{
-    constructor(val){
-        this.val = val
-        this.children = []
-    }
-}
+// class Node{
+//     constructor(val){
+//         this.val = val
+//         this.children = []
+//     }
+// }
 
-const ary = [1,5,3,4,2,5,6]
+// const ary = [1,5,3,4,2,5,6]
 
-console.log(Math.max(ary))
+// console.log(Math.max(ary))
+
+const ary = new Array(2**32-1).fill(1)
+console.log(ary[5])
