@@ -43,5 +43,9 @@
 
 // console.log(Math.max(ary))
 
-const ary = new Array(2**32-1).fill(1)
-console.log(ary[5])
+//const ary = new Array(2**32-1).fill(1)
+//console.log(ary[5])
+
+
+const ary = [1,2,3,4,5]
+console.log(ary.)
