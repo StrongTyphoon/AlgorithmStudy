@@ -38,8 +38,8 @@ while(day<2001){
                         const [newX, newY] = [x+dx[idx],y+dy[idx]]
                         if(newX<n&&newX>-1&&newY<n&&newY>-1){
                             if(!visited[newX][newY]){
-                                const abs = Math.abs(inpAry[x][y]-inpAry[newX][newY])
-                                if(abs<=r && abs>=l){
+                                const diff = Math.abs(inpAry[x][y]-inpAry[newX][newY])
+                                if(diff<=r && diff>=l){
                                     visited[newX][newY] = visited[x][y]
                                     queue.push(newX,newY)
                                     tempary.push([newX,newY])
