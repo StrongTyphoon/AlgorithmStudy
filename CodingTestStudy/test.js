@@ -46,11 +46,16 @@
 //const ary = new Array(2**32-1).fill(1)
 //console.log(ary[5])
 
-const ary = [1,2,3,4,5]
-let i = 0
-while(i<10){
-    ary.forEach(()=>{
-        return 
-    })
-    i+=
-}
+// const ary = [1,2,3,4,5]
+// let i = 0
+// while(i<10){
+//     ary.forEach(()=>{
+//         return 
+//     })
+//     i+=
+// }
+
+let a = 4
+
+a= a<0?0:a
+console.log(a)
