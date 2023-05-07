@@ -41,6 +41,7 @@ const dfs = (x,y,z) => {
     }
 
 }
-dfs(12, 10, 4)
+
+dfs(5, 40, 2)
 console.log(dp)
 
