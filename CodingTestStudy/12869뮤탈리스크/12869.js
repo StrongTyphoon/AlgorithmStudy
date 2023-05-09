@@ -9,11 +9,17 @@ const dp = new Array(61*61*61).fill(0)      // 체력이 x,y,z => dp[x*61*61+y*6
 const dfs = (x,y,z) => {
 
     const chk = (a,b,c)=>{  //a,b,c가 이동할 경로, x,y,z가 이동전 경로
-        a = a<=0?0:a
-        b = b<=0?0:b
-        c = c<=0?0:c
-        if(dp[a*3721+b*61+c] < dp[x*3721+y*61+z] + 1){
+        a = a<0?0:a
+        b = b<0?0:b
+        c = c<0?0:c
+        if(!dp[a*3721+b*61+c]){
             dp[a*3721+b*61+c] = dp[x*3721+y*61+z] + 1
+            console.log('chk is 0,',a,b,c, dp[a*3721+b*61+c] )
+            return true
+        }
+        if(dp[a*3721+b*61+c] > dp[x*3721+y*61+z] + 1){
+            dp[a*3721+b*61+c] = dp[x*3721+y*61+z] + 1
+            console.log('chk',a,b,c, dp[a*3721+b*61+c])
             return true
         }
 
@@ -22,26 +28,38 @@ const dfs = (x,y,z) => {
     }
 
     if(chk(x-9,y-3,z-1)){
+        console.log('9,3,1')
         dfs(x-9,y-3,z-1)
+        
     }
     if(chk(x-9,y-1,z-3)){
-        dfs(x-9,y-1,z-3)    
+        console.log('9,1,3')
+        dfs(x-9,y-1,z-3)
+            
     }
     if(chk(x-3,y-9,z-1)){
+        console.log('3,9,1')
         dfs(x-3,y-9,z-1)
+        
     }
     if(chk(x-3,y-1,z-9)){
+        console.log('3,1,9')
         dfs(x-3,y-1,z-9)
+        
     }
     if(chk(x-1,y-9,z-3)){
+        console.log('1,9,3')
         dfs(x-1,y-9,z-3)
+        
     }
     if(chk(x-1,y-3,z-9)){
+        console.log('1,3,9')
         dfs(x-1,y-3,z-9)
+        
     }
 
 }
 
-dfs(5, 40, 50)
+dfs(54, 18, 6)
 console.log(dp)
 

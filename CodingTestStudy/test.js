@@ -59,3 +59,5 @@ let a = 4
 
 a= a<0?0:a
 console.log(a)
+
+
