@@ -1,32 +1,58 @@
 const fs = require('fs')
-const inp = fs.readFileSync('./1992쿼드트리/input.txt').toString().split('\n')
+const inp = fs.readFileSync('17829_222폴링/input.txt').toString().trim().replaceAll('\r','').split('\n')
 const N = +inp[0]
-const inpAry = inp.slice(1).map(ele=>ele.split('').map(ele=>+ele))
+const inpAry = inp.slice(1).map(ele=>ele.split('').map(e=>+e))
 
-console.log(inpAry)
-
-// n과 왼쪽 모서리 좌표를 받으면 왼쪽 오른쪽 왼쪽아래 오른쪽아래 순으로 탐색하면서 차례대로 log를 찍는다.
-const ans = ['(']
-const delta = [[0,0],[0,1],[1,0],[1,1]]
-function dfs(n,x,y){
-    const m = n/2
-    if(m === 1){
-        ans.push('(',inpAry[x][y],inpAry[x][y+1],inpAry[x+1][y],inpAry[x+1][y+1],')')
-        
-    }
-    else{
-        const temp = inpAry[x][y]
-        for(let i=x; i<m; i++){
-            for(let j=y; j<m; j++){
-                if(inpAry[i][j] !== temp){
-                    dfs(m,i,j)
-                    
-                } 
-            }
+const chkAllZero = (images)=>{
+    for(let i=0; i<images.length; i++){
+        for(let j=0; j<images.length; j++){
+            if(images[i][j]===1) return false
         }
-        
     }
+    return true
+}
+
+const chkAllOne = (images)=>{
+    for(let i=0; i<images.length; i++){
+        for(let j=0; j<images.length; j++){
+            if(images[i][j]===0){
+                return false
+            } 
+        }
+    }
+    return true
+}
+
+const divCon = (images) =>{
+    if(chkAllZero(images)){
+        return "0"
+    }
+
+    if(chkAllOne(images)){
+        return "1"
+    }
+
+    const halflen = images.length/2
+
+    const Ary1 = []
+    const Ary2 = []
+    const Ary3 = []
+    const Ary4 = []
+
+    for(let i=0;i<halflen;i++){
+        Ary1.push(images[i].slice(0,halflen))
+        Ary2.push(images[i].slice(halflen))
+    }
+
+    for(let i=halflen; i<images.length; i++){
+        Ary3.push(images[i].slice(0,halflen))
+        Ary4.push(images[i].slice(halflen))
+    }
+//    console.log(Ary1,'\n', Ary2,'\n',Ary3,'\n', Ary4,'\n')
+
+    return '('+divCon(Ary1)+divCon(Ary2)+divCon(Ary3)+divCon(Ary4)+')'
+
 
 }
-//복잡하네 ; zxczxc
-dfs(N,0,0)
+
+console.log(divCon(inpAry))
