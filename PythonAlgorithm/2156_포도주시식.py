@@ -9,3 +9,4 @@ def rec(totalcnt, cnt=2):
     pass
 
 n = int(input())
+print(n)
