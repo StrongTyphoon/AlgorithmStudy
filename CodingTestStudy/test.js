@@ -55,7 +55,9 @@
 //     i+=
 // }
 
-let a = 4
+function fn(a=1){
+    return a
+}
 
-a= a<0?0:a
-console.log(a)
+let {a=1} = {b:234}
+let b==1
