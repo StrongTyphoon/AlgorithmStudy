@@ -1,14 +1,10 @@
 N,M,B = map(int, input().split(" "))
 block = [list(map(int,input().split(" "))) for _ in range(N)]
 
-#print(N,M,B,block)
-
-INF = 2*12500*256
-
 ans = []
-mintime = INF
-minH = 256
-maxH = 0
+mintime = float("infinity")
+minH = 257
+maxH = -1
 
 for i in range(N):
     for j in range(M):
@@ -38,7 +34,7 @@ def makeSameHeight(block, height, inven):
                 inven += diff
                 time += 2*diff
             
-            if(inven < 0): return -1
+    if(inven < 0): return -1
     return time
         
 if(isAllSame(block)):
@@ -46,14 +42,12 @@ if(isAllSame(block)):
 else:    
     for i in range(minH, maxH+1):
         ret = makeSameHeight(block, i ,B)
-        if(ret >= 0):
-            if(mintime>ret): 
-                ans = []
-                mintime = ret
-                ans.append(i)
-            elif(mintime == ret):
-                ans.append(i)
+        if(ret < 0): continue
+        if(mintime>ret): 
+            ans = []
+            mintime = ret
+            ans.append(i)
+        elif(mintime == ret):
+            ans.append(i)
     print(mintime, max(ans))
-
-
 
