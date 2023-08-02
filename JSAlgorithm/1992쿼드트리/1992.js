@@ -1,5 +1,5 @@
 const fs = require('fs')
-const inp = fs.readFileSync('17829_222폴링/input.txt').toString().trim().replaceAll('\r','').split('\n')
+const inp = fs.readFileSync('./1992쿼드트리/input.txt').toString().trim().replaceAll('\r','').split('\n')
 const N = +inp[0]
 const inpAry = inp.slice(1).map(ele=>ele.split('').map(e=>+e))
 
