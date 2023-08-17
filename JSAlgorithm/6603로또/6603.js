@@ -14,7 +14,8 @@ for(let i=0; i<inp.length-1; i++){
     }
     
     for(let j=0; j<N; j++){
-      if( visited.findIndex(val=>val===inpAry[j]) !== -1 ) continue
+      // if( visited.findIndex(val=>val===inpAry[j]) !== -1 ) continue
+      if(visited.includes(inpAry[j])) continue
       if( inpAry[j] < visited.slice(-1)[0] ) continue
       const idx = visited.length
       visited.push(inpAry[j])
