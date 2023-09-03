@@ -1,5 +1,5 @@
 const fs = require('fs')
-const inp = fs.readFileSync('5648역원소정렬/input.txt').toString().replaceAll('\r','').trim().split('\n').map(ary=>ary.trim())
+const inp = fs.readFileSync('5648역원소정렬/input.txt').toString().replaceAll('\r','').trim().split(/[ \n]+/)
 
 let inpAry = []
 
@@ -10,7 +10,10 @@ for(let str of inp){
     for(let i=str.length-1; i>=0; i--){
       tempStr += str[i]
     }
-    inpAry.push(+tempStr)
+    let temp = +tempStr
+    if(temp<10**12){
+      inpAry.push(temp)
+    }
   })
 }
 // 맨 첫번째 수를 slicing
