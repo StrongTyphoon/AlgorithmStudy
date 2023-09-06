@@ -90,7 +90,6 @@ while(1){
       }else{
         ;[nextChangeTime, nextChangeDir] = [null, null]
       }
-      // console.log('시간', nextChangeTime, '방향', nextChangeDir)
     }
   }
 }
