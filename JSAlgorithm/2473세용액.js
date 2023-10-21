@@ -66,13 +66,10 @@ for(let i=0; i<N; i++){
       binarySearch(
         inpAry[i],
         inpAry[j],
-        inpAry.filter((_,idx)=>{
-          if(idx === i || idx === j) return false
-          return true
-        })
+        i,
+        j
         )
-        
-
+      
     if(!min) {
       min = Math.abs(temp)
       ans = tempAry
@@ -90,24 +87,51 @@ console.log(ans.join(' '))
 /* 
 N 개 중 두 수(num1, num2)와 나머지 N-2개의 수가 담긴 ary를 받아
 가장 0에 가까운 수와 num set을 리턴
+
+-2 -3 -24 -6 98 100 61
+
+-24 -6 -3 -2 61 98 100 * * * * *
+mid가 j보다 크다면 +1해주고
+mid가 i보다 작다면 -1해주고
+
+
 */
 
-function binarySearch(num1, num2, ary){
+function binarySearch(num1, num2, i, j){
   let sum = num1 + num2
-
   let start = 0
-  let end = ary.length - 1
+  let end = N-3
   let mid = 0
 
   while(true){
-    mid = Math.floor((start + end)/2)
-    if(sum + ary[mid] === 0) return [0, [num1, num2, ary[mid]].sort((a,b)=>a-b)]
-    else if(sum+ary[mid] > 0 ) end = mid - 1
-    else start = mid + 1
+    mid = convertIdx(Math.floor((start + end)/2))
+
+    console.log(num1, num2, i, j, mid)
+    if(sum + inpAry[mid] === 0) return [0, [num1, num2, inpAry[mid]].sort((a,b)=>a-b)]
+    else if(sum + inpAry[mid] > 0 ) end = convertIdx(mid - 1, i, j)
+    else start = convertIdx(mid + 1,i,j)
 
     if(start >= end) {
-      return [sum + ary[start], [num1, num2, ary[start]].sort((a,b)=>a-b) ]
+      return [sum + inpAry[start], [num1, num2, inpAry[start]].sort((a,b)=>a-b) ]
     }
   }
 
+}
+
+/* 
+[1, 3, 7, 9, 10, 12 , 15]
+i=1, j=3인 경우
+0 => 0
+1 => 2
+2 => 4
+3 => 5
+4 => 6
+*/
+function convertIdx(idx , i, j){
+  if(idx<i){
+    return idx
+  }else if(idx < j-1){
+    return idx + 1
+  }
+  return idx + 2
 }
